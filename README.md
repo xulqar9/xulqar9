@@ -80,4 +80,23 @@ class HoroscopeProgram
         string baseInfo = sign switch
         {
             "Aries" => "You are courageous and energetic.",
-            "Taurus" => "You
+            "Taurus" => "You are reliable and practical.",
+            "Gemini" => "You are curious and adaptable.",
+            "Cancer" => "You are empathetic and loyal.",
+            "Leo" => "You are confident and charismatic.",
+            "Virgo" => "You are analytical and hardworking.",
+            "Libra" => "You are diplomatic and fair-minded.",
+            "Scorpio" => "You are passionate and resourceful.",
+            "Sagittarius" => "You are optimistic and freedom-loving.",
+            "Capricorn" => "You are disciplined and responsible.",
+            "Aquarius" => "You are innovative and independent.",
+            "Pisces" => "You are intuitive and compassionate.",
+            _ => "Your personality is unique and multifaceted."
+        };
+
+        string genderInfo = sex == "M" ? "You have a strong sense of justice." : "You have a nurturing and caring nature.";
+
+        return $"{baseInfo} {genderInfo}";
+    }
+}
+
