@@ -1,14 +1,83 @@
+using System;
+using System.Globalization;
 
-## 🌐 Socials:
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/1bless) 
+class HoroscopeProgram
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter your birthdate (YYYY-MM-DD): ");
+        DateTime birthdate;
+        while (!DateTime.TryParseExact(Console.ReadLine(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthdate))
+        {
+            Console.WriteLine("Invalid format. Please enter your birthdate (YYYY-MM-DD): ");
+        }
 
+        Console.WriteLine("Enter your sex (M/F): ");
+        string sex;
+        do
+        {
+            sex = Console.ReadLine().ToUpper();
+            if (sex != "M" && sex != "F")
+            {
+                Console.WriteLine("Invalid input. Please enter 'M' for Male or 'F' for Female: ");
+            }
+        } while (sex != "M" && sex != "F");
 
-# 💻 Tech Stack:
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Anaconda](https://img.shields.io/badge/Anaconda-%2344A833.svg?style=for-the-badge&logo=anaconda&logoColor=white) ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) ![DjangoREST](https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300000f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white) ![Adobe Fonts](https://img.shields.io/badge/Adobe%20Fonts-000B1D.svg?style=for-the-badge&logo=Adobe%20Fonts&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=1bless&theme=dark&hide_border=false&include_all_commits=true&count_private=true)<br/>
-![](https://github-readme-streak-stats.herokuapp.com/?user=1bless&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=1bless&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
+        string zodiacSign = GetZodiacSign(birthdate);
+        string horoscope = GetHoroscope(zodiacSign);
+        string info = GetInfo(zodiacSign, sex);
 
+        Console.WriteLine($"Your Zodiac Sign is: {zodiacSign}");
+        Console.WriteLine($"Horoscope: {horoscope}");
+        Console.WriteLine($"Info: {info}");
+    }
 
+    static string GetZodiacSign(DateTime birthdate)
+    {
+        int month = birthdate.Month;
+        int day = birthdate.Day;
 
+        if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return "Aries";
+        if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return "Taurus";
+        if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return "Gemini";
+        if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return "Cancer";
+        if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return "Leo";
+        if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return "Virgo";
+        if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return "Libra";
+        if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return "Scorpio";
+        if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return "Sagittarius";
+        if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return "Capricorn";
+        if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "Aquarius";
+        if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return "Pisces";
+
+        return "Unknown"; // Default case
+    }
+
+    static string GetHoroscope(string sign)
+    {
+        // Example horoscopes for each sign
+        switch (sign)
+        {
+            case "Aries": return "Today is a good day for new beginnings.";
+            case "Taurus": return "Patience will be your key to success.";
+            case "Gemini": return "Your adaptability will open new doors.";
+            case "Cancer": return "Focus on your emotional well-being.";
+            case "Leo": return "Your charisma leads you to exciting opportunities.";
+            case "Virgo": return "Attention to detail will bring rewards.";
+            case "Libra": return "Balance in relationships is crucial today.";
+            case "Scorpio": return "Embrace the changes coming your way.";
+            case "Sagittarius": return "Adventure awaits, be ready to explore.";
+            case "Capricorn": return "Your determination will lead to achievements.";
+            case "Aquarius": return "Innovation is the key to your progress.";
+            case "Pisces": return "Your intuition guides you to the right path.";
+            default: return "No horoscope available.";
+        }
+    }
+
+    static string GetInfo(string sign, string sex)
+    {
+        // Example information for each sign and sex
+        string baseInfo = sign switch
+        {
+            "Aries" => "You are courageous and energetic.",
+            "Taurus" => "You
