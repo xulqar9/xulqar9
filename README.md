@@ -51,6 +51,6 @@
 ###
 
 <div align="left">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=xulqar9&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=10&theme=dark&hide_border=true&order=2" height="150" alt="languages graph"  />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=xulqar9&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=2&theme=dark&hide_border=true&order=2" height="150" alt="languages graph"  />
 </div>
 
