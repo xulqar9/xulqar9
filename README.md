@@ -1,15 +1,5 @@
 README.md
 
-Your Readme is Done 🎉🎉🎉
-Star This Project
-Fork on Github
-
-<div align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=xulqar9.xulqar9&"  />
-</div>
-
-###
-
 <h1 align="center">hey there</h1>
 
 ###
